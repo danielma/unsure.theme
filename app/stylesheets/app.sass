@@ -1,0 +1,98 @@
+// https://coolors.co/23231a-f18f01-129490-23b5d3-70b77e
+
+$xs: ( max:  767px )
+$sm: ( min:  768px )
+$md: ( min:  992px )
+$lg: ( min: 1200px )
+$sm-only: ( min: map-get($sm, min), max: map-get($md, min) - 1 )
+$md-only: ( min: map-get($md, min), max: map-get($lg, min) - 1 )
+
+@mixin breakpoint($map)
+  $query: ""
+  @if map-has-key($map, min)
+    $query: append($query, "(min-width: #{map-get($map, min)})")
+  @if map-has-key($map, min) and map-has-key($map, max)
+    $query: append($query, "and")
+  @if map-has-key($map, max)
+    $query: append($query, "(max-width: #{map-get($map, max)})")
+  @media screen and #{$query}
+    @content
+
+$c-background: hsl(190, 9, 97)
+$c-base: hsl(10, 10, 20)
+$c-primary: hsl(188, 100, 41)
+$c-secondary: hsl(30, 90, 70)
+$c-subtle: hsl(30, 4, 60)
+
+$font-accent: "Share Tech"
+$font-body: "Open Sans", Helvetica Neue, Helvetica, sans-serif
+
+html, body
+  background-color: $c-background
+  color: $c-base
+  font-family: $font-accent
+  font-size: 16px
+
+h1, h2, h3, h4, h5, h6
+  font-family: $font-accent
+  font-weight: normal
+
+a
+  color: $c-primary
+  text-decoration: underline
+
+body
+  margin: 0 auto
+  max-width: 40rem
+
+  @media (max-width: 42rem)
+    margin: 0 1rem
+
+header
+  padding: 1rem 0
+
+  .site-title
+    font-size: 1.6em
+    text-decoration: none
+    color: $c-subtle
+    margin-right: 1rem
+
+  nav
+    display: inline-block
+
+    ul
+      padding: 0
+      margin: 0
+      list-style-type: none
+
+    li
+      display: inline-block
+
+    a
+      color: $c-secondary
+
+footer
+  padding: 1rem 0
+  font-size: .8rem
+  color: $c-subtle
+
+article
+  font-family: $font-body
+
+  h1
+    margin: 1rem 0
+    display: inline-block
+
+    &, a
+      letter-spacing: -0.02em
+      text-decoration: none
+
+  time
+    font-family: $font-accent
+    color: $c-subtle
+    font-size: .8rem
+
+  .single-content,
+  .summary-content
+    > p:first-child
+      margin-top: 0

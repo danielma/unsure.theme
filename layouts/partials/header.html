@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ .Title }}</title>
+	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+
+        <meta property="og:title" content="{{ .Title }}" />
+        <meta property="og:url" content="{{ .URL | absURL }}" />
+        {{ with .Content }}
+          <meta property="og:type" content="article" />
+        {{ end }}
+
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}stylesheets/app.css">
+        <link href="https://fonts.googleapis.com/css?family=Share+Tech|Open+Sans:400,400i,700" rel="stylesheet">
+        <script src="{{ .Site.BaseURL }}javascripts/app.js"></script>
+        <script>require("app")</script>
+	{{ if .RSSLink -}}<link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}">{{- end }}
+	{{ .Hugo.Generator }}
+</head>
+<body>
+	<header>
+		<a class="site-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+		<nav>
+			<ul>
+				{{ range .Site.Menus.main }}
+				<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+				{{ end }}
+			</ul>
+		</nav>
+	</header>

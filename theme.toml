@@ -1,0 +1,11 @@
+name = "Unsure"
+license = "MIT"
+description = "Unsure"
+homepage = "https://github.com/danielma"
+tags = ["blog"]
+features = ["blog"]
+min_version = 0.17
+
+[author]
+  name = "person unsure"
+  homepage = "https://person.unsure.tech/"
