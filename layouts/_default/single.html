@@ -2,8 +2,10 @@
 	<main>
 		<article>
                         <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-                        <time>{{ .Date.Format "2006-02-01 3:04pm" }}</time>
-			<div class="single-content">
+                        {{ if gt .Date.UnixNano 0 }}
+                          <time>{{ .Date.Format "2006-02-01 3:04pm" }}</time>
+                        {{ end }}
+                        <div class="single-content">
 				{{ .Content }}
 			</div>
 			<div>
